@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Vidrios AR</title>
-    <style>
-        body { font-family: system-ui, sans-serif; margin: 0; background: #f4f4f5; }
-        
-        .header { background: #18181b; color: white; padding: 1.5rem; text-align: center; }
-        
-        .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        
-        .glass-card { background: white; padding: 2rem 1rem; border-radius: 12px; text-align: center; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transition: transform 0.2s; border: 1px solid #e4e4e7; font-weight: 600; color: #3f3f46; }
-        .glass-card:hover { transform: translateY(-5px); }
-        
-        .camera-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 100; }
-        
-        #camera-feed { width: 100%; height: 100%; object-fit: cover; }
-        
-        #glass-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; transition: all 0.3s ease; }
-        
-        .ui-controls { position: absolute; bottom: 30px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 101; }
-        
-        .close-btn { background: #ef4444; color: white; border: none; padding: 12px 24px; border-radius: 999px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        
-        .efecto-claro { background: rgba(255, 255, 255, 0.05); backdrop-filter: brightness(0.98); }
-        .efecto-esmerilado { background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(14px); }
-        .efecto-filtrasol { background: rgba(0, 0, 0, 0.55); backdrop-filter: brightness(0.65) contrast(1.1); }
-        .efecto-tintex { background: rgba(34, 139, 34, 0.25); backdrop-filter: brightness(0.85) contrast(1.05); }
-        .efecto-reflecta { background: rgba(180, 180, 180, 0.6); backdrop-filter: brightness(0.7) blur(1px); }
-    </style>
+    <title>Cancelería AR | Catálogo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>CATÁLOGO DE VIDRIOS</h1>
+        <p>Selecciona un material para previsualizar</p>
+    </header>
 
-<div class="header">
+    <main class="grid-catalogo">
+        <div class="card" onclick="activarCamara('claro')">
+            <div class="preview claro"></div>
+            <h3>Vidrio Claro</h3>
+        </div>
+        <div class="card" onclick="activarCamara('esmerilado')">
+            <div class="preview esmerilado"></div>
+            <h3>Esmerilado</h3>
+        </div>
+        <div class="card" onclick="activarCamara('filtrasol')">
+            <div class="preview filtrasol"></div>
+            <h3>Filtrasol Gris</h3>
+        </div>
+        <div class="card" onclick="activarCamara('reflecta')">
+            <div class="preview reflecta"></div>
+            <h3>Reflecta Plata</h3>
+        </div>
+    </main>
+
+    <div id="visor-ar" class="oculto">
+        <video id="video-feed" autoplay playsinline></video>
+        <div id="filtro-vidrio"></div>
+        <button class="btn-cerrar" onclick="cerrarCamara()">VOLVER AL CATÁLOGO</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
     <h1>Catálogo Interactivo</h1>
     <p>Selecciona un cristal para visualizarlo en tu entorno</p>
 </div>
