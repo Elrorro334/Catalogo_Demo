@@ -1,0 +1,71 @@
+:root {
+    --rojo: #D11D27;
+    --blanco: #FFFFFF;
+    --gris-fondo: #F5F5F5;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--gris-fondo);
+    margin: 0;
+}
+
+header {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.grid-catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--blanco);
+    border-bottom: 4px solid var(--rojo);
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:active { transform: scale(0.95); }
+
+.preview { height: 100px; border-radius: 4px; margin-bottom: 10px; }
+.claro { background: linear-gradient(135deg, #e0f2f1, #ffffff); border: 1px solid #ccc; }
+.esmerilado { background: #e0e0e0; filter: blur(2px); }
+.filtrasol { background: #424242; opacity: 0.7; }
+.reflecta { background: linear-gradient(135deg, #9e9e9e, #ffffff); }
+
+/* Cámara UI */
+#visor-ar {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: black; z-index: 100;
+}
+
+#video-feed { width: 100%; height: 100%; object-fit: cover; }
+
+#filtro-vidrio {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+}
+
+.btn-cerrar {
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--rojo); color: white; border: none;
+    padding: 15px 30px; font-weight: bold; border-radius: 50px;
+}
+
+.oculto { display: none !important; }
+
+/* Filtros AR */
+.ar-esmerilado { backdrop-filter: blur(15px) contrast(0.8); background: rgba(255,255,255,0.3); }
+.ar-filtrasol { backdrop-filter: brightness(0.6); background: rgba(0,0,0,0.4); }
+.ar-reflecta { backdrop-filter: brightness(0.8) blur(1px); background: rgba(150,150,150,0.5); }
